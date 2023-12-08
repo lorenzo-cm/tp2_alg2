@@ -20,7 +20,7 @@ def christofides_algorithm(G):
     # Transformar o Circuito Euleriano em um Circuito Hamiltoniano
     hamiltonian_circuit = make_hamiltonian(eulerian_circuit)
 
-    # Aplicar a heurística 2-opt
+    # Aplicar a heurística 2-opt (testei 3-opt mas demora muito mais)
     optimized_circuit = apply_2_opt(hamiltonian_circuit, G)
 
     cost = calculate_cost(optimized_circuit, G)
