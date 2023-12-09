@@ -1,6 +1,6 @@
 import networkx as nx
 
-def christofides_algorithm(G):
+def christofides_algorithm(G, local_search=True):
     # Encontrar uma Árvore Geradora Mínima
     mst = minimum_spanning_tree(G)
 
@@ -20,8 +20,11 @@ def christofides_algorithm(G):
     # Transformar o Circuito Euleriano em um Circuito Hamiltoniano
     hamiltonian_circuit = make_hamiltonian(eulerian_circuit)
 
-    # Aplicar a heurística 2-opt (testei 3-opt mas demora muito mais)
-    optimized_circuit = apply_2_opt(hamiltonian_circuit, G)
+    optimized_circuit = hamiltonian_circuit
+
+    if local_search:
+        # Aplicar a heurística 2-opt (testei 3-opt mas demora muito mais)
+        optimized_circuit = apply_2_opt(hamiltonian_circuit, G)
 
     cost = calculate_cost(optimized_circuit, G)
 
