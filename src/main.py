@@ -1,4 +1,6 @@
 import sys
+import threading
+import time
 
 from algorithms.branch_and_bound import branch_and_bound
 from algorithms.twice_around_the_tree import twice_around_the_tree
@@ -6,8 +8,17 @@ from algorithms.christofides import christofides_algorithm
 from utils.drop_vertex import drop_vertices
 from utils.load_graph import create_tsp_graph_from_file
 
+TIME_LIMIT = 18000
+
+def time_limit(timeout):
+    time.sleep(timeout)
+    print('Time limit exceeded')
+    print("Custo: nan")
+    print("Caminho: nan")
+    exit()
 
 if __name__ == "__main__":
+
     file_path = sys.argv[1]
 
     if len(sys.argv) > 2:
@@ -31,6 +42,8 @@ if __name__ == "__main__":
     print("Caminho:", path_chr)
 
     print('\n')
+
+    time_limit(TIME_LIMIT)
 
     cost, path = branch_and_bound(tsp_graph)
 
