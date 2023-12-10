@@ -8,7 +8,7 @@ from algorithms.christofides import christofides_algorithm
 from utils.drop_vertex import drop_vertices
 from utils.load_graph import create_tsp_graph_from_file
 
-TIME_LIMIT = 18000
+TIME_LIMIT = 1800
 
 def time_limit(timeout):
     time.sleep(timeout)
